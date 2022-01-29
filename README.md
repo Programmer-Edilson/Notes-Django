@@ -46,7 +46,7 @@ using the command bellow:
 
 * source my_venv/bin/activate
 
-​
+
 
 3 > install requirements
 
