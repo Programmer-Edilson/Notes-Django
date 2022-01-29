@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}My Notes{% endblock %}
+{% block semi_title %}Notes{% endblock %}
+
+<link href="{% static 'css/album.css' %}" rel="stylesheets"/>
+
+{% block style %}
+<script src="{% static 'js/holder.js' %}"></script>
+
+<style>
+    #edit, #delete{
+        padding-left: 14px;
+        padding-right: 14px;
+        margin-left: 4px;
+      }
+      
+      #status{
+        color: slateblue;
+        padding-left: 5px;
+      }
+  </style>
+{% endblock %}
+
+{% block nav0 %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'create' %}">Add Note</a>
+    </li>
+{% endblock %}
+
+{% block search %}
+    <form class="form-inline my-2 my-md-0">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search">
+    </form>
+{% endblock %}
+
+{% block content %}
+    <main role="main">
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div class="row">
+		
+		 {% for note in notes %}
+
+            <div class="col-md-4">
+              <div class="card mb-4 box-shadow">
+					  <img class="card-img-top" data-src="holder.js/100px90?theme=thumb&bg=55595c&fg=eceeef&text={{ note.title }}" alt="Card image cap">
+                <div class="card-body">
+				    <div><p>Status:<span id="status"><strong>{{ note.status }}</strong></span></p></div>
+				    <p class="card-text">{{ note.description }}</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div class="btn-group">
+				      <a href="{% url 'update' note.id %}"><button id="edit" type="button" class="btn btn-sm btn-outline-primary">Edit</button></a>
+					  <a href="{% url 'delete' note.id %}"><button id="delete" type="button" class="btn btn-sm btn-outline-danger">Delete</button></a>
+                    </div>
+					<small class="text-muted">{{ note.date }}</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+		 {% endfor %}
+		 
+
+		  </div>
+		  <a href="{% url 'create' %}"><button type="submit" class="btn btn-primary btn-lg btn-block">Add Note</button></a>
+		</div>
+      </div>
+	</main>
+
+{% endblock %}

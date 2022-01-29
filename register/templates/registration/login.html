@@ -1,0 +1,43 @@
+{% load static %}
+{% load crispy_forms_tags %}
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="descriprtion" content="">
+    <meta name="author" content="">
+
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<style>
+        .container {
+            padding-top: 30px;
+        }
+        h3{
+		    margin-bottom: 15px;
+            text-align: center;
+        }
+        button{
+		    margin-top: 8px;
+            margin-bottom: 20px;
+        }
+	</style>
+
+  </head>
+
+  <body>
+    <section>
+        <div class="container">
+            <h3><strong>Sign In</strong></h3>
+            <form method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                {{ form | crispy }}
+                <p>Don't have an account <a href="{% url 'signup' %}">Sign Up</a>
+				<button type="submit" class="btn btn-primary btn-lg btn-block">Sign Up</a>
+            </form>
+        </div>
+     </section>
+  </body>
+</html>
