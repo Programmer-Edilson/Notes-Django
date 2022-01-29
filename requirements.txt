@@ -2,7 +2,7 @@ asgiref==3.5.0
 autopep8==1.5.7
 Cython==0.29.26
 dj-database-url==0.5.0
-django_heroku=0.3.1
+django_heroku==0.3.1
 Django==4.0.1
 django-cors-headers==3.8.0
 django-crispy-forms==1.14.0
