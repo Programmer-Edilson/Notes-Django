@@ -21,10 +21,21 @@ def signup(request):
                 return redirect('notes')
             else:
                 return redirect('login')
-
-    form = UserForm()
-    context = {'form': form}
-    return render(request, 'signup.html', context)
+        else:
+            form = UserForm(initial={
+                'first_name': request.POST['first_name'],
+                'last_name' : request.POST['last_name'],
+                'username' : request.POST['username'],
+                'email' : request.POST['email']
+            })
+            
+            messages.warning(request, "Try a different username and password")
+            context = {'form': form}
+            return render(request, 'signup.html', context)
+    else:
+        form = UserForm()
+        context = {'form': form}
+        return render(request, 'signup.html', context)
 
 @login_required
 def delete(request):

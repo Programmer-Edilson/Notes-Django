@@ -31,7 +31,18 @@
      <section>
 		<div class="container">
 		    <h3><strong>Sign Up</strong></h3>
-		    <form method="POST" action="{% url 'signup' %}">
+		   
+			{% if messages %}
+				{% for message in messages %}
+						<div class="container">
+								<div class="alert alert-{{ message.tags }}" role="alert">
+								{{ message }}
+								</div>
+						</div>
+				{% endfor %}
+		    {% endif %}
+
+			<form method="POST" action="{% url 'signup' %}">
 				{% csrf_token %}
 				{{ form | crispy }}
 				<p>I have an account <a href="{% url 'login' %}">Sign In</a></p>
