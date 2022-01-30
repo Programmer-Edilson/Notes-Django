@@ -2,6 +2,9 @@
 
 This is an advanced project to save notes in Django. where users are able to Create, Read, Update and Delete their notes. The authorization and permission feature has been implemented in this way only registered users can perform these operations and each user will only be able to manipulate their own notes without having access to other users' notes.
 
+# Demo on Heroku
+
+https://notesdjango.herokuapp.com
 
 
 # Features
@@ -56,6 +59,9 @@ using the command bellow:
 
 
 
-4 > Run the server
+4 > Run the server and enjoy it.
 32
 * python manage.py runserver
+
+![Screenshot_20220129-111800](https://user-images.githubusercontent.com/78730979/151687745-9a1a11d4-7575-4298-ba51-b91f46a575a4.png)
+![Screenshot_20220129-111847](https://user-images.githubusercontent.com/78730979/151687751-699586ce-273d-41e8-9c85-6b4741fc2e37.png)
