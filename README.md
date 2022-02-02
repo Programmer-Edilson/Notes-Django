@@ -63,5 +63,6 @@ using the command bellow:
 32
 * python manage.py runserver
 
+# Screenshots
 ![Screenshot_20220129-111800](https://user-images.githubusercontent.com/78730979/151687745-9a1a11d4-7575-4298-ba51-b91f46a575a4.png)
 ![Screenshot_20220129-111847](https://user-images.githubusercontent.com/78730979/151687751-699586ce-273d-41e8-9c85-6b4741fc2e37.png)
