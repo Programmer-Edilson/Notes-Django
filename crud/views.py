@@ -1,15 +1,17 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Note
-from .forms import NoteForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.contrib import messages
+from .forms import NoteForm
+from .models import Note
 
 # Create your views here.
 
-status = {-1: "To Do",
+status = {
+        -1: "To Do",
         0 : "Doing",
-        1 : "Done" }
+        1 : "Done" 
+}
 
 @login_required
 def list_notes(request):
