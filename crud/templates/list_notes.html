@@ -29,6 +29,12 @@
     </li>
 {% endblock %}
 
+{% block profile %}	
+	<li class="nav-item">
+		<a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+{% endblock %}
+
 {% block search %}
     <form class="form-inline my-2 my-md-0">
         <input class="form-control" type="text" placeholder="Search" aria-label="Search">
