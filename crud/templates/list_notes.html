@@ -49,7 +49,7 @@
 		
 		 {% for note in notes %}
 
-            <div class="col-md-4">
+            <div class="col-md-6">
               <div class="card mb-4 box-shadow">
 					  <img class="card-img-top" data-src="holder.js/100px90?theme=thumb&bg=55595c&fg=eceeef&text={{ note.title }}" alt="Card image cap">
                 <div class="card-body">
@@ -60,7 +60,7 @@
 				      <a href="{% url 'update' note.id %}"><button id="edit" type="button" class="btn btn-sm btn-outline-primary">Edit</button></a>
 					  <a href="{% url 'delete' note.id %}"><button id="delete" type="button" class="btn btn-sm btn-outline-danger">Delete</button></a>
                     </div>
-					<small class="text-muted">{{ note.date }}</small>
+					<p><small class="text-muted">{{ note.date }}</small></p>
                   </div>
                 </div>
               </div>
