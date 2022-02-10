@@ -6,3 +6,4 @@ class NoteForm(forms.ModelForm):
         model = Note
         fields = '__all__'
         exclude = ['date', 'user']
+
