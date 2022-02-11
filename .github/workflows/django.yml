@@ -34,7 +34,7 @@ jobs:
     - name: Run migrations
       run: |
         python3 manage.py makemigrations
-        python3 manage.p migtate
+        python3 manage.py migtate
 
     - name: run django tests
       run: |
