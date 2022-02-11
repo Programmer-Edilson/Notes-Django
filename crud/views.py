@@ -1,14 +1,17 @@
-from django.shortcuts import render, redirect
-from django.contrib import messages
-from .models import Note
-from .forms import NoteForm
 from django.contrib.auth.decorators import login_required
+from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.contrib import messages
+from .forms import NoteForm
+from .models import Note
 
 # Create your views here.
 
-status = {-1: "To Do",
+status = {
+        -1: "To Do",
         0 : "Doing",
-        1 : "Done" }
+        1 : "Done" 
+}
 
 @login_required
 def list_notes(request):
@@ -85,3 +88,14 @@ def profile(request):
 
     context = {'form': form}
     return render(request, 'profile.html', context)
+
+@login_required
+def search(request):
+    if request.method == "POST":
+        query = str(request.POST['query'])
+        notes = Note.objects.filter(user=request.user, title__contains=query)
+        context = {"notes" : notes, "query" : query }
+        return render(request, 'search.html', context)
+    else:
+        return HttpResponse("<h1>only POST method is allowed</h1>")
+

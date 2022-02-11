@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search{% endblock %}
+{% block semi_title %}Search results{% endblock %}
+
+{% block nav0 %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'notes' %}">My Notes</a>
+    </li>
+{% endblock %}
+
+{% block nav1 %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'create' %}">New Note</a>
+    </li>
+{% endblock %}
+
+{% block profile %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+{% endblock %}
+
+{% block search %}
+<form class="form-inline my-2 my-md-0" method="POST" action="{% url 'search' %}">
+        {% csrf_token %}
+		<input name="query"  class="form-control" type="text" placeholder="Search" arial-label="Search">
+    </form>
+{% endblock %}
+
+
+{% block content %}
+		<main role="main" class="container">
+				<div class="my-3 p-3 bg-white rounded box-shadow">
+						<h6 class="border-bottom border-gray pb-2 mb-0">results for "{{ query  }}"</h6>
+						{% for note in notes %}
+						<div class="media text-muted pt-3">
+								<img data-src="holder.js/32x32?theme=thumb&bg=007bff&fg=007bff&size=1" alt="" class="mr-2 rounded">
+								<p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+								<strong class="d-block text-gray-dark"><a href="{% url 'update' note.id %}">{{ note.title }}</a></strong>
+								{{ note.description }}
+								</p>
+						</div>
+						{% endfor %}
+
+		        </div>
+		</main>
+
+{% endblock %}
+
+{% block script %}
+		<script src="{% static 'js/holder.js' %}"></script>
+{% endblock %}
+~
