@@ -19,8 +19,8 @@ import django.contrib.auth
 from . import views
 
 urlpatterns = [
-    path('', include('django.contrib.auth.urls')),
     path('', views.gateway, name='gateway'),
+    path('', include('django.contrib.auth.urls')),
     path('admin/', admin.site.urls),
     path('notes/', include('crud.urls')),
     path('register/', include('register.urls')),

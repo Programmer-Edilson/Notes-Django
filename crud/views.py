@@ -15,7 +15,7 @@ status = {
 
 @login_required
 def list_notes(request):
-    notes = Note.objects.filter(user=request.user)
+    notes = Note.objects.filter(user=request.user).order_by('date')
     for note in notes:
         note.status = status[note.status]
     context = {'notes': notes}
@@ -36,7 +36,7 @@ def create(request):
             return redirect('notes')
     form = NoteForm()
     context = {'form': form}
-    return render(request, 'create.html', context)
+    return render(request, 'create_note.html', context)
 
 @login_required
 def update(request, pk):
@@ -78,7 +78,9 @@ def delete(request, pk):
 @login_required
 def profile(request):
     user = request.user
-    form = {'first_name': user.first_name,
+    form = {
+            'id': user.id,
+            'first_name': user.first_name,
             'last_name': user.last_name,
             'username': user.username,
             'email' : user.email,
@@ -93,9 +95,9 @@ def profile(request):
 def search(request):
     if request.method == "POST":
         query = str(request.POST['query'])
-        notes = Note.objects.filter(user=request.user, title__contains=query)
-        context = {"notes" : notes, "query" : query }
-        return render(request, 'search.html', context)
+        notes = Note.objects.filter(user=request.user, title__icontains=query)
+        context = {"notes" : notes, "query" : query}
+        return render(request, 'search_note.html', context)
     else:
         return HttpResponse("<h1>only POST method is allowed</h1>")
 

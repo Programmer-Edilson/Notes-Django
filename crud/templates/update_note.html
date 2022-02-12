@@ -11,15 +11,32 @@
     </li>
 {% endblock %}
 
+{% block nav1 %}
+    <li class="nav-item active">
+        <a class="nav-link" href="{% url 'create' %}">New Note</a>
+    </li>
+{% endblock %}
+
+{% block profile %}
+    <li class="nav-item">
+        <a class="nav-link" href="{% url 'profile' %}">Profile</a>
+        </li>
+{% endblock %}
+
+{% block style %}
+{% endblock %}
 
 {% block content %}
  <div class="container">
-		 <form method="POST" action="{% url 'update' id %}">
+		 <form method="POST" style="margin-bottom: 10px" action="{% url 'update' id %}">
 				{% csrf_token %}
 				{{ form | crispy }}
 
-		<button type="submit" class="btn btn-primary btn-lg btn-block">Save Note</button>
+		<button type="submit" class="btn btn-success btn-lg btn-block">Update note</button>
 	</form>
+    <a href="{% url 'notes' %}"><button type="submit" class="btn btn-primary btn-lg btn-block">Descard changes</button></a>
+    <h1></h1>
+    <a href="{% url 'delete' id %}"><button type="submit" class="btn btn-danger btn-lg btn-block">Delete note</button></a>
   </div>
 {% endblock %}
 
