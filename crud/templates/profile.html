@@ -73,7 +73,10 @@
         </div>
       </div>
     </div>
-	<a href="{% url 'delete_user' %}"><button type="button" class="btn btn-outline-danger btn-lg btn-block">Delete my account</button></a>
+    <form method="POST" action="{% url 'delete_user' %}">
+        {% csrf_token %}
+	    <button type="submit" class="btn btn-outline-danger btn-lg btn-block">Delete my account</button>
+    </form>
   </div>
 </section>
 

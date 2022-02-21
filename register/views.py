@@ -13,8 +13,8 @@ def signup(request):
         if form.is_valid():
             form.save()
             user = authenticate(
-                    username=request.POST['username'],
-                    password=request.POST['password1']
+                    username=str(request.POST['username']),
+                    password=str(request.POST['password1'])
             )
             if user is not None:
                 login(request, user)
@@ -43,7 +43,6 @@ def delete(request):
     
     if user is not None:
         user.delete()
-        messages.success(request, "Account deleted successfully!")
         return redirect('login')
     else:
         messages.warning(request, "Error deleting account")
